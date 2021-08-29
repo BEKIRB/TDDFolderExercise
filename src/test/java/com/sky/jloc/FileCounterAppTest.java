@@ -1,10 +1,15 @@
 package com.sky.jloc;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class FileCounterAppTest {
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Test
     public void emptyFolder() {
@@ -18,6 +23,16 @@ public class FileCounterAppTest {
 
         //then
         assertEquals(1, FileCounterApp.countFiles(path));
+    }
+
+    @Test
+    public void nonExistsFolder(){
+        exceptionRule.expect(RuntimeException.class);
+        exceptionRule.expectMessage("Folder does not exists");
+        String path = "src/test/resources/filecount/dir2/dir21/dir211/nonexists";
+
+        //then
+        assertEquals(0, FileCounterApp.countFiles(path));
     }
 
 }
