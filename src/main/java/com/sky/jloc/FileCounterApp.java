@@ -19,7 +19,7 @@ public class FileCounterApp {
             if(!Files.exists(mainFolder)){
                 throw new RuntimeException("Folder does not exists");
             }
-            List<File> files = Files.list(Paths.get(path)).map(Path::toFile).collect(Collectors.toList());
+            List<File> files = Files.list(Paths.get(path)).map(Path::toFile).filter(File::isFile).collect(Collectors.toList());
 
             return files.size();
         } catch (IOException e) {
