@@ -48,7 +48,8 @@ public class FileCounterAppTest {
 
     @Test
     public void multipleFiles(){
-        String path = "src/test/resources/filecount/dir2/dir21";
+        String path = "src/test/resources/filecount/dir1";
+
 
         //then
         assertEquals(2, FileCounterApp.countFiles(path));
