@@ -23,7 +23,7 @@ public class FileCounterApp {
 
             return files.size();
         } catch (IOException e) {
-            throw new RuntimeException("An Exception occured");
+            throw new RuntimeException("An Exception occurred");
         }
     }
 

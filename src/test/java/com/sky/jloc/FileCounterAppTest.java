@@ -4,6 +4,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.nio.file.InvalidPathException;
+
 import static org.junit.Assert.assertEquals;
 
 public class FileCounterAppTest {
@@ -35,4 +37,12 @@ public class FileCounterAppTest {
         assertEquals(0, FileCounterApp.countFiles(path));
     }
 
+    @Test
+    public void  invalidPath(){
+        exceptionRule.expect(InvalidPathException.class);
+        String path = "http://fdf.comfsdfsdfsrc/test/resources/filecount/dir2/dir21/dir211/nonexists";
+
+        //then
+        assertEquals(0, FileCounterApp.countFiles(path));
+    }
 }
